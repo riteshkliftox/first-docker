@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: 12345678
+  host: 192.168.1.8
+
+development:
+  <<: *default
+  database: rails_7_with_docker_development
+
+test:
+  <<: *default
+  database: rails_7_with_docker_test
+
+production:
+  <<: *default
+  database: rails_7_with_docker_production
+  username: rails_7_with_docker
+  password: <%= ENV["RAILS_7_WITH_DOCKER_DATABASE_PASSWORD"] %>
